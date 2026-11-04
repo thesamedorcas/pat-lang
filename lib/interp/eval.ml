@@ -352,6 +352,32 @@ let apply_primitive runtime prim args =
       | [x] -> string_const (string_of_int (int_of_value x))
       | _ -> assert false
     end
+  | "stringToInt" ->
+    expect_arity prim 1 args;
+    begin
+      match args with
+      | [x] ->
+        let s = string_of_value x in
+        begin
+          match int_of_string_opt s with
+          | Some i -> int_const i
+          | None -> runtime_error (Printf.sprintf "Primitive 'stringToInt' got non-integer '%s'" s)
+        end
+      | _ -> assert false
+    end
+  | "get_arg" ->
+    expect_arity prim 1 args;
+    begin
+      match args with
+      | [x] ->
+        let key = string_of_value x in
+        begin
+          match List.assoc_opt key Settings.(get program_args) with
+          | Some value -> string_const value
+          | None -> runtime_error (Printf.sprintf "Missing command-line argument '--%s'" key)
+        end
+      | _ -> assert false
+    end
   | _ ->
     runtime_error (Printf.sprintf "Unknown primitive '%s'" prim)
 
