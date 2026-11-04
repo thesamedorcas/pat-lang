@@ -76,7 +76,8 @@ def main(): Unit {
   spawn { pong(pongMb) };
 
   let pingMb = new [PingMb] in
-  spawn { ping(pingMb, pongMb, 5) };
+  let pings = stringToInt(get_arg("pings")) in
+  spawn { ping(pingMb, pongMb, pings) };
 
   pingMb ! Start()
 }
