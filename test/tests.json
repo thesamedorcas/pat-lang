@@ -520,6 +520,31 @@
                     "stderr": ""
                 },
                 {
+                    "name": "get_arg reads a program argument",
+                    "filename": "eval-tests/get-arg.pat",
+                    "program_args": ["--", "--n", "41"],
+                    "exit_code": 0,
+                    "stdout": "42\n",
+                    "stderr": ""
+                },
+                {
+                    "name": "get_arg with a missing program argument",
+                    "filename": "eval-tests/get-arg.pat",
+                    "exit_code": 1
+                },
+                {
+                    "name": "stringToInt with a non-integer",
+                    "filename": "eval-tests/get-arg.pat",
+                    "program_args": ["--", "--n", "abc"],
+                    "exit_code": 1
+                },
+                {
+                    "name": "Malformed program arguments",
+                    "filename": "eval-tests/get-arg.pat",
+                    "program_args": ["--", "41"],
+                    "exit_code": 1
+                },
+                {
                     "name": "Future (de Liguoro & Padovani)",
                     "filename": "examples/de_liguoro_padovani/future.pat",
                     "exit_code": 0,
