@@ -18,6 +18,7 @@ let join_not_combine = ref false
 let show_ir = ref true
 let show_ref_counting = ref false
 let typecheck_only = ref false
+let program_args = ref []
 
 let set : 'a setting -> 'a -> unit = fun setting value ->
     setting := value
