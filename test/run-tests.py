@@ -26,7 +26,7 @@ def run_tests(testsuite):
             if test.get("ignore", False):
                 print(f"{test['name']}: (IGNORED)")
                 continue
-            command = [executable] + test.get("args", []) + [test["filename"]]
+            command = [executable] + test.get("args", []) + [test["filename"]] + test.get("program_args", [])
             process_result = subprocess.run(
                 command,
                 stdout=subprocess.PIPE,
