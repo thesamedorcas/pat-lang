@@ -32,7 +32,7 @@ let rec parse_program_args = function
         Printf.eprintf "Invalid program argument '%s': expected --key value pairs\n" arg;
         exit 1
 
-let process filename is_verbose is_debug should_show_ir should_show_ref_counting should_typecheck_only mode benchmark_count disable_ql use_join liberal_dts raw_program_args () =
+let process filename is_verbose is_debug should_show_ir should_show_ref_counting should_typecheck_only mode benchmark_count disable_ql use_join liberal_dts raw_program_args disable_print should_time_interpreter () =
     Settings.(set verbose is_verbose);
     Settings.(set debug is_debug);
     Settings.(set show_ir should_show_ir);
@@ -44,6 +44,8 @@ let process filename is_verbose is_debug should_show_ir should_show_ref_counting
     Settings.(set join_not_combine use_join);
     Settings.(set liberal_datatypes liberal_dts);
     Settings.(set program_args (parse_program_args raw_program_args));
+    Settings.(set no_print disable_print);
+    Settings.(set time_interpreter should_time_interpreter);
     try
         Frontend.Parse.parse_file filename ()
         |> Frontend.Pipeline.pipeline
@@ -72,6 +74,8 @@ let () =
     $ Arg.(value & flag & info ["dt"; "liberal-datatypes"] ~doc:"allow data contained in datatypes to be usable (may impact soundness)")
     $ Arg.(value & pos_right 0 string [] & info [] ~docv:"PROGRAM_ARGS"
       ~doc:"arguments for the Pat program, as --key value pairs after a -- separator; read with get_arg")
+    $ Arg.(value & flag & info ["no-print"] ~doc:"make the print primitive a no-op")
+    $ Arg.(value & flag & info ["time-interpreter"] ~doc:"print the interpreter's running time in milliseconds to stderr")
     $ const ()) in
   let info = Cmd.info "pat" ~doc:"Typechecker and interpreter for the Pat programming language" in
   Cmd.v info pat_t
