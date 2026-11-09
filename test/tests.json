@@ -539,6 +539,24 @@
                     "exit_code": 1
                 },
                 {
+                    "name": "--no-print suppresses print output",
+                    "filename": "eval-tests/get-arg.pat",
+                    "args": ["--no-print"],
+                    "program_args": ["--", "--n", "41"],
+                    "exit_code": 0,
+                    "stdout": "",
+                    "stderr": ""
+                },
+                {
+                    "name": "--time-interpreter reports milliseconds on stderr",
+                    "filename": "eval-tests/get-arg.pat",
+                    "args": ["--time-interpreter"],
+                    "program_args": ["--", "--n", "41"],
+                    "exit_code": 0,
+                    "stdout": "42\n",
+                    "stderr_regex": "[0-9]+\\.[0-9]{2}\n"
+                },
+                {
                     "name": "Malformed program arguments",
                     "filename": "eval-tests/get-arg.pat",
                     "program_args": ["--", "41"],
