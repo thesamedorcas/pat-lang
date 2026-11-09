@@ -309,7 +309,7 @@ let apply_primitive runtime prim args =
     begin
       match args with
       | [x] ->
-        print_endline (string_of_value x);
+        if not Settings.(get no_print) then print_endline (string_of_value x);
         unit_value
       | _ -> assert false
     end
