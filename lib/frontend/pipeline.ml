@@ -32,7 +32,9 @@ let typecheck p ir =
                         rc_ir
             in
             if not Settings.(get typecheck_only) then
-                Interp.Eval.run_program rc_ir
+                let (ms, ()) = Util.Benchmark.time (fun () -> Interp.Eval.run_program rc_ir) in
+                if Settings.(get time_interpreter) then
+                    Printf.eprintf "%.2f\n" ms
     in
     (p, prety_opt, ir, ty, env, constrs)
 
