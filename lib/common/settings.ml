@@ -19,6 +19,8 @@ let show_ir = ref true
 let show_ref_counting = ref false
 let typecheck_only = ref false
 let program_args = ref []
+let no_print = ref false
+let time_interpreter = ref false
 
 let set : 'a setting -> 'a -> unit = fun setting value ->
     setting := value

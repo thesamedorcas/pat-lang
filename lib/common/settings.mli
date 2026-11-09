@@ -17,6 +17,8 @@ val show_ir : bool setting
 val show_ref_counting : bool setting
 val typecheck_only : bool setting
 val program_args : (string * string) list setting
+val no_print : bool setting
+val time_interpreter : bool setting
 
 val set : 'a setting -> 'a -> unit
 val get : 'a setting -> 'a
