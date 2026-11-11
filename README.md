@@ -119,6 +119,12 @@ program typechecks and is interpreted by default.
 : Number of repetitions for benchmark runs.
   Use `-1` (default) to disable benchmarking.
 
+`--no-print`
+: Make the `print` primitive a no-op.
+
+`--time-interpreter`
+: Print the interpreter's running time, in milliseconds, to stderr.
+
 `-q`, `--disable-quasilinearity`
 : Disable quasilinearity checking.
 
@@ -127,6 +133,9 @@ program typechecks and is interpreted by default.
 
 `-dt`, `--liberal-datatypes`
 : Allow data contained in datatypes to be usable (may impact soundness).
+
+`-- --<key> <value> ...`
+: Arguments for the Pat program, read with the `getArg` primitive.
 
 ### Example
 
