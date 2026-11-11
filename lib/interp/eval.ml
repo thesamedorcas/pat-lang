@@ -365,7 +365,7 @@ let apply_primitive runtime prim args =
         end
       | _ -> assert false
     end
-  | "get_arg" ->
+  | "getArg" ->
     expect_arity prim 1 args;
     begin
       match args with

@@ -27,5 +27,5 @@ let signatures =
         ("sleep", function_type false [Base Base.Int] Type.unit_type);
         ("intToString", function_type false [Base Base.Int] (Base Base.String));
         ("stringToInt", function_type false [Base Base.String] (Base Base.Int));
-        ("get_arg", function_type false [Base Base.String] (Base Base.String))
+        ("getArg", function_type false [Base Base.String] (Base Base.String))
     ]

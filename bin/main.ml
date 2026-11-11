@@ -73,7 +73,7 @@ let () =
     $ Arg.(value & flag & info ["j"; "join-not-combine"] ~doc:"use sequential join for value subterms, rather than requiring disjointness")
     $ Arg.(value & flag & info ["dt"; "liberal-datatypes"] ~doc:"allow data contained in datatypes to be usable (may impact soundness)")
     $ Arg.(value & pos_right 0 string [] & info [] ~docv:"PROGRAM_ARGS"
-      ~doc:"arguments for the Pat program, as --key value pairs after a -- separator; read with get_arg")
+      ~doc:"arguments for the Pat program, as --key value pairs after a -- separator; read with getArg")
     $ Arg.(value & flag & info ["no-print"] ~doc:"make the print primitive a no-op")
     $ Arg.(value & flag & info ["time-interpreter"] ~doc:"print the interpreter's running time in milliseconds to stderr")
     $ const ()) in

@@ -520,7 +520,7 @@
                     "stderr": ""
                 },
                 {
-                    "name": "get_arg reads a program argument",
+                    "name": "getArg reads a program argument",
                     "filename": "eval-tests/get-arg.pat",
                     "program_args": ["--", "--n", "41"],
                     "exit_code": 0,
@@ -528,7 +528,7 @@
                     "stderr": ""
                 },
                 {
-                    "name": "get_arg with a missing program argument",
+                    "name": "getArg with a missing program argument",
                     "filename": "eval-tests/get-arg.pat",
                     "exit_code": 1
                 },
