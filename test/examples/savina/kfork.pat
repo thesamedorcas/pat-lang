@@ -54,9 +54,10 @@ def main(): Unit {
   let actorMb3 = new [ActorMb] in
   spawn { actor(actorMb3) };
 
-  flood(100, actorMb1);
-  flood(100, actorMb2);
-  flood(100, actorMb3)
+  let messages = stringToInt(getArg("messages")) in
+  flood(messages, actorMb1);
+  flood(messages, actorMb2);
+  flood(messages, actorMb3)
 }
 
 main()

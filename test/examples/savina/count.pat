@@ -84,7 +84,8 @@ def main(): Unit {
   spawn { counter(counterMb, 0) };
 
   let producerMb = new [ProducerMb] in
-  spawn { producer(producerMb, counterMb, 5) };
+  let messages = stringToInt(getArg("messages")) in
+  spawn { producer(producerMb, counterMb, messages) };
 
   producerMb ! Inc()
 }

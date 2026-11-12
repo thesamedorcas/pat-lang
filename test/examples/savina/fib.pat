@@ -53,7 +53,8 @@ def main(): Unit {
   spawn { fib(fibMb) };
 
   let self = new [FibMb] in
-  fibMb ! Req(self, 5);
+  let n = stringToInt(getArg("n")) in
+  fibMb ! Req(self, n);
   guard self: Resp {
     receive Resp(f) from self ->
       free(self);

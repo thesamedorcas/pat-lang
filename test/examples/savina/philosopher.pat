@@ -130,4 +130,4 @@ def main(numRounds: Int): Unit {
   philosopherMb2 ! Start()
 }
 
-main(5)
+main(stringToInt(getArg("rounds")))

@@ -121,7 +121,8 @@ def smoker_exit(self: SmokerMb?): Unit {
 def main(): Unit {
   
   let arbiterMb = new [ArbiterMb] in
-  spawn { arbiter(arbiterMb, 10) };
+  let rounds = stringToInt(getArg("rounds")) in
+  spawn { arbiter(arbiterMb, rounds) };
 
   arbiterMb ! Start()
 }
