@@ -36,9 +36,18 @@ EXAMPLES =\
         ("Transaction", os.path.join("test", "examples", "savina", "banking.pat"))
     ]
 
+PROGRAM_ARGS = {
+    "Ping Pong": "-- --pings 5",
+    "Counter": "-- --messages 5",
+    "K-Fork": "-- --messages 100",
+    "Fibonacci": "-- --n 5",
+    "Philosopher": "-- --rounds 5",
+    "Smokers": "-- --rounds 10",
+}
+
 def run_example(name, path):
     print("Checking " + name)
-    subprocess.run(["./pat " + path], shell=True)
+    subprocess.run(["./pat " + path + " " + PROGRAM_ARGS.get(name, "")], shell=True)
     print()
 
 def run_examples():

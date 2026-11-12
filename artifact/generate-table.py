@@ -26,15 +26,22 @@ BENCHMARKS =\
 	("Barber", os.path.join("test", "examples", "savina", "lists", "barber.pat")),
      ]
 
+PROGRAM_ARGS = {
+    "Ping Pong": ["--", "--pings", "5"],
+    "Counter": ["--", "--messages", "5"],
+    "Fibonacci": ["--", "--n", "5"],
+    "Philosopher": ["--", "--rounds", "5"],
+}
+
 # Tries to run in strict mode -- returns True if it works, False otherwise
-def try_strict(path):
-    return subprocess.run(["./pat", "--mode=strict", path],\
+def try_strict(name, path):
+    return subprocess.run(["./pat", "--mode=strict", path] + PROGRAM_ARGS.get(name, []),\
                           capture_output=True).returncode == 0
 
 def run_benchmark(name, path):
     print("Running example " + name)
-    is_strict = try_strict(path)
-    time = str(subprocess.run(["./pat", "-b", str(REPETITIONS), path],\
+    is_strict = try_strict(name, path)
+    time = str(subprocess.run(["./pat", "-b", str(REPETITIONS), path] + PROGRAM_ARGS.get(name, []),\
                               capture_output=True, text=True).stdout)
     return (name, is_strict, time)
 
